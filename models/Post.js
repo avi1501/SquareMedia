@@ -9,7 +9,8 @@ const postObj = {
        body:{
            type:String,
            require:false,
-       }
+       },
+       
 }
 
 

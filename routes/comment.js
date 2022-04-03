@@ -12,6 +12,7 @@ Router.post("/", async (req, res)=>{
             username:user.username,
             postId:req.body.postId,
             body:req.body.body,
+            
         }
 
         const newComment = new Comment(commentBody);
@@ -38,7 +39,7 @@ Router.put("/:id", async (req, res)=>{
         try{
             const updatedComment = await Comment.findByIdAndUpdate(comment._id, {body:req.body.body}, {new:true});
             var {userId, postId, ...commentDetail} = updatedComment._doc;
-            
+            console.log(commentDetail)
             res.status(200).send(commentDetail);
         }catch(err){
             res.status(500).send(err);
@@ -90,6 +91,8 @@ Router.get("/postComment/:id", async(req, res)=>{
             var comment = {
                 id:comments[i]._id,
                 body:comments[i].body,
+                updatedAt:comments[i]._doc.updatedAt,
+                createdAt:comments[i]._doc.createdAt,
                 user:{
                     username:user.username,
                     name:user.name

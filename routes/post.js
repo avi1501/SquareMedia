@@ -20,7 +20,10 @@ Router.post("/", async (req, res)=>{
             },
             postDetails:{
                 postId:savePost._doc._id,
-                postBody:savePost._doc.body
+                postBody:savePost._doc.body,
+                updatedAt:savePost._doc.updatedAt,
+                createdAt:savePost._doc.createdAt,
+
             }
         }
         res.status(200).json(PostCompleteDetail);
@@ -55,7 +58,9 @@ Router.put("/:id", async (req, res)=>{
                 },
                 postDetails:{
                     postId:updatedPost._doc._id,
-                    postBody:updatedPost._doc.body
+                    postBody:updatedPost._doc.body,
+                    updatedAt:updatedPost._doc.updatedAt,
+                    createdAt:updatedPost._doc.createdAt,
                 }
             }
 
@@ -108,7 +113,9 @@ Router.get("/:id", async (req, res)=>{
             },
             postDetails:{
                 postId:post._doc._id,
-                postBody:post._doc.body
+                postBody:post._doc.body,
+                updatedAt:post._doc.updatedAt,
+                createdAt:post._doc.createdAt,
             }
         }
         res.send(PostCompleteDetail).status(200)
