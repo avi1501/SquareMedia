@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
+const cors = require('cors');
 const app = express();
 
 const authRoute = require("./routes/auth");
@@ -14,6 +15,7 @@ const publicRoute = require("./routes/publicData")
 
 //configuring the environment variables
 dotenv.config();
+app.use(cors());
 app.use(express.json());
 
 //Server connection with mongo DB code
